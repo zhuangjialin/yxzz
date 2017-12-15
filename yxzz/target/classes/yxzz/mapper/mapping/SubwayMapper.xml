@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yxzz.mapper.SubwayMapper">
+
+
+	<select id="findSubwayList" resultType="yxzz.dto.SubwayDto"
+		parameterType="java.util.HashMap">
+		SELECT
+		subway_id AS subwayId,
+		subway_name AS subwayName,
+		Subway_lng AS subwayLng,
+		subway_lat AS subwayLat,
+		subway_address AS subwayAddress,
+		subway_poi_id AS subwayPoiId,
+		subway_propertyNum AS subwayPropertyNum,
+		condition1 AS condition1,
+		condition2 AS condition2
+		FROM
+		yx_Subway
+		WHERE
+		1=1
+		<if test="subwayId !=null and subwayId !=''">
+			and subway_id=#{subwayId}
+		</if>
+
+		<if test="subwayName !=null and subwayName !=''">
+			and subway_name=#{subwayName}
+		</if>
+		<if test="subwayLng !=null and subwayLng !=''">
+			and Subway_lng=#{subwayLng}
+		</if>
+		<if test="subwayLat !=null and subwayLat !=''">
+			and subway_lat=#{subwayLat}
+		</if>
+		<if test="subwayAddress !=null and subwayAddress !=''">
+			and subway_address=#{subwayAddress}
+		</if>
+		<if test="subwayPoiId !=null and subwayPoiId !=''">
+			and subway_poi_id=#{subwayPoiId}
+		</if>
+		<if test="subwayPropertyNum !=null and subwayPropertyNum !=''">
+			and subway_propertyNum=#{subwayPropertyNum}
+		</if>
+		<if test="condition1 !=null and condition1 !=''">
+			and condition1=#{condition1}
+		</if>
+		<if test="condition2 !=null and condition2 !=''">
+			and condition2=#{condition2}
+		</if>
+
+
+	</select>
+
+
+
+
+
+	<insert id="addSubway" parameterType="java.util.Map">
+		insert into yx_Subway(
+		<trim prefix="" suffixOverrides=",">
+			<if test="subwayId !=null and subwayId !=''">
+				subway_id,
+			</if>
+			<if test="subwayName !=null and subwayName !=''">
+				subway_name,
+			</if>
+			<if test="subwayLng !=null and subwayLng !=''">
+				Subway_lng,
+			</if>
+			<if test="subwayLat !=null and subwayLat !=''">
+				subway_lat,
+			</if>
+			<if test="subwayAddress !=null and subwayAddress !=''">
+				subway_address,
+			</if>
+			<if test="subwayPoiId !=null and subwayPoiId !=''">
+				subway_poi_id,
+			</if>
+			<if test="subwayPropertyNum !=null and subwayPropertyNum !=''">
+				subway_propertyNum,
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				condition1,
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				condition2,
+			</if>
+		</trim>
+		) values (
+		<trim prefix="" suffixOverrides=",">
+			<if test="subwayId !=null and subwayId !=''">
+				#{subwayId,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayName !=null and subwayName !=''">
+				#{subwayName,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayLng !=null and subwayLng !=''">
+				#{subwayLng,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayLat !=null and subwayLat !=''">
+				#{subwayLat,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayAddress !=null and subwayAddress !=''">
+				#{subwayAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayPoiId !=null and subwayPoiId !=''">
+				#{subwayPoiId,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayPropertyNum !=null and subwayPropertyNum !=''">
+				#{subwayPropertyNum,jdbcType=VARCHAR},
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				#{condition1,jdbcType=VARCHAR},
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				#{condition2,jdbcType=VARCHAR},
+			</if>
+		</trim>
+		)
+	</insert>
+
+
+
+	<select id="findSubwayById" resultType="yxzz.dto.SubwayDto"
+		parameterType="java.lang.String">
+
+		SELECT
+		subway_id AS subwayId,
+		subway_name AS subwayName,
+		Subway_lng AS subwayLng,
+		subway_lat AS subwayLat,
+		subway_address AS subwayAddress,
+		subway_poi_id AS subwayPoiId,
+		subway_propertyNum AS subwayPropertyNum,
+		condition1 AS condition1,
+		condition2 AS condition2
+		FROM
+		yx_Subway
+		WHERE 1=1
+		and
+		Subway_id=#{SubwayId}
+
+
+	</select>
+
+
+	<update id="editSubwayById" parameterType="java.util.HashMap">
+		update yx_Subway
+		<set>
+				<trim prefix="" suffixOverrides=",">
+		
+			<if test="subwayId !=null and subwayId !=''">
+				subway_id=#{subwayId,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayName !=null and subwayName !=''">
+				subway_name=#{subwayName,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayLng !=null and subwayLng !=''">
+				Subway_lng=#{subwayLng,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayLat !=null and subwayLat !=''">
+				subway_lat=#{SubwayLat,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayAddress !=null and subwayAddress !=''">
+				subway_address=#{subwayAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayPoiId !=null and subwayPoiId !=''">
+				subway_poi_id=#{subwayPoiId,jdbcType=VARCHAR},
+			</if>
+					<if test="subwayPropertyNum !=null and subwayPropertyNum !=''">
+				subway_propertyNum=#{subwayPropertyNum,jdbcType=VARCHAR},
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				condition1=#{condition1,jdbcType=VARCHAR},
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				condition2=#{condition2,jdbcType=VARCHAR},
+			</if>
+			</trim>
+		</set>
+		where Subway_id=#{SubwayId,jdbcType=VARCHAR}
+	</update>
+
+
+
+	<delete id="deleteSubway" parameterType="java.lang.String">
+		delete from
+		yx_Subway
+		where subway_id =#{subwayId,jdbcType=VARCHAR}
+	</delete>
+		
+	
+	<insert id="addSubwaylineSubway" parameterType="java.util.Map">
+		insert into yx_subwayline_subway(
+		<trim prefix="" suffixOverrides=",">
+			<if test="subwaylineId !=null and subwaylineId !=''">
+				subwayline_id,
+			</if>
+			<if test="subwayId !=null and subwayId !=''">
+				subway_id,
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				condition1,
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				condition2,
+			</if>
+		</trim>
+		) values (
+		<trim prefix="" suffixOverrides=",">
+			<if test="subwaylineId !=null and subwaylineId !=''">
+				#{subwaylineId,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayId !=null and subwayId !=''">
+				#{subwayId,jdbcType=VARCHAR},
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				#{condition1,jdbcType=VARCHAR},
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				#{condition2,jdbcType=VARCHAR},
+			</if>
+		</trim>
+		)
+	</insert>
+	
+
+
+  <insert id="addAreaSubway" parameterType="java.util.Map">
+		insert into yx_area_subway(
+		<trim prefix="" suffixOverrides=",">
+			<if test="areaId !=null and areaId !=''">
+				area_id,
+			</if>
+			<if test="subwayId !=null and subwayId !=''">
+				subway_id,
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				condition1,
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				condition2,
+			</if>
+		</trim>
+		) values (
+		<trim prefix="" suffixOverrides=",">
+			<if test="areaId !=null and areaId !=''">
+				#{areaId,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayId !=null and subwayId !=''">
+				#{subwayId,jdbcType=VARCHAR},
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				#{condition1,jdbcType=VARCHAR},
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				#{condition2,jdbcType=VARCHAR},
+			</if>
+		</trim>
+		)
+	</insert>
+	
+	
+
+</mapper>

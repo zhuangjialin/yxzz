@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yxzz.mapper.PropertyMapper">
+
+
+	<select id="findPropertyList" resultType="yxzz.dto.PropertyDto" 
+		parameterType="java.util.HashMap">
+		SELECT
+		property_id AS propertyId,
+		property_name AS propertyame,
+		property_lng AS propertyLng,
+		property_lat AS propertyLat,
+		property_min_floor AS propertyMinFloor,
+		property_max_floor AS
+		propertyMaxFloor,
+		property_price AS propertyPrice,
+		property_description
+		AS propertyDescription,
+		property_min_year AS propertyMinYear,
+		property_max_year AS propertyMaxYear,
+		property_square AS
+		propertySquare,
+		property_is_fengzu AS propertyIsFengzu,
+		property_attribute AS propertyAttribute,
+		property_stander_height AS
+		propertyStanderHeight,
+		property_phone AS propertyPhone,
+		property_telephone AS propertyTelephone,
+		property_create_user AS
+		propertyCreateUser,
+		property_update_user AS propertyUpdateUser,
+		property_create_time AS propertyCreateTime,
+		property_imgs_id AS
+		propertyImgsId,
+		property_is_zcorzd AS propertyIsZcorzd,
+		property_is_delete AS propertyIsDelete,
+		condition1 AS condition1,
+		condition2 AS condition2
+		FROM
+		yx_property
+		WHERE 1=1
+		<if test="propertyId !=null and propertyId !=''">
+			and property_id=#{propertyId}
+		</if>
+		<if test="propertyName !=null and propertyName !=''">
+			and property_name=#{propertyName}
+		</if>
+		<if test="propertyLng !=null and propertyLng !=''">
+			and property_lng=#{propertyLng}
+		</if>
+		<if test="propertyLat !=null and propertyLat !=''">
+			and property_lat=#{propertyLat}
+		</if>
+		<if test="propertyMinFloor !=null and propertyMinFloor !=''">
+			and property_min_floor=#{propertyMinFloor}
+		</if>
+		<if test="propertyMaxFloor !=null and propertyMaxFloor !=''">
+			and property_max_floor=#{propertyMaxFloor}
+		</if>
+		<if test="propertyPrice !=null and propertyPrice !=''">
+			and property_price=#{propertyPrice}
+		</if>
+		<if test="propertyDescription !=null and propertyDescription !=''">
+			and property_description=#{propertyDescription}
+		</if>
+		<if test="propertyMinYear !=null and propertyMinYear !=''">
+			and property_min_year=#{propertyMinYear}
+		</if>
+		<if test="propertyMaxYear !=null and propertyMaxYear !=''">
+			and property_max_year=#{propertyMaxYear}
+		</if>
+		<if test="propertySquare !=null and propertySquare !=''">
+			and property_square=#{propertySquare}
+		</if>
+		<if test="propertyIsFengzu !=null and propertyIsFengzu !=''">
+			and property_is_fengzu=#{propertyIsFengzu}
+		</if>
+		<if test="propertyAttribute !=null and propertyAttribute !=''">
+			and property_attribute=#{propertyAttribute}
+		</if>
+		<if test="propertyStanderHeight !=null and propertyStanderHeight !=''">
+			and property_stander_height=#{propertyStanderHeight}
+		</if>
+		<if test="propertyPhone !=null and propertyPhone !=''">
+			and property_phone=#{propertyPhone}
+		</if>
+		<if test="propertyTelephone !=null and propertyTelephone !=''">
+			and property_telephone=#{propertyTelephone}
+		</if>
+		<if test="propertyCreateUser !=null and propertyCreateUser !=''">
+			and property_create_user=#{propertyCreateUser}
+		</if>
+		<if test="propertyUpdateUser !=null and propertyUpdateUser !=''">
+			and property_update_user=#{propertyUpdateUser}
+		</if>
+		<if test="propertyCreateTime !=null and propertyCreateTime !=''">
+			and property_create_time=#{propertyCreateTime}
+		</if>
+		<if test="propertyImgsId !=null and propertyImgsId !=''">
+			and property_imgs_id=#{propertyImgsId}
+		</if>
+		<if test="propertyIsZcorzd !=null and propertyIsZcorzd !=''">
+			and property_is_zcorzd=#{propertyIsZcorzd}
+		</if>
+		<if test="propertyIsDelete !=null and propertyIsDelete !=''">
+			and property_is_delete=#{propertyIsDelete}
+		</if>
+		<if test="PropertyId !=null and PropertyId !=''">
+			and condition1=#{condition1}
+		</if>
+		<if test="condition2 !=null and condition2 !=''">
+			and condition2=#{condition2}
+		</if>
+
+
+	</select>
+
+
+
+
+
+	<insert id="addProperty" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="propertyId">
+		insert into yx_property(
+		<trim prefix="" suffixOverrides=",">
+			<if test="propertyName !=null and propertyName !=''">
+				property_name,
+			</if>
+			<if test="propertyLng !=null and propertyLng !=''">
+				property_lng,
+			</if>
+			<if test="propertyLat !=null and propertyLat !=''">
+				property_lat,
+			</if>
+			<if test="propertyMinFloor !=null and propertyMinFloor !=''">
+				property_min_floor,
+			</if>
+			<if test="propertyMaxFloor !=null and propertyMaxFloor !=''">
+				property_max_floor,
+			</if>
+			<if test="propertyPrice !=null and propertyPrice !=''">
+				property_price,
+			</if>
+			<if test="propertyDescription !=null and propertyDescription !=''">
+				property_description,
+			</if>
+			<if test="propertyMinYear !=null and propertyMinYear !=''">
+				property_min_year,
+			</if>
+			<if test="propertyMaxYear !=null and propertyMaxYear !=''">
+				property_max_year,
+			</if>
+			<if test="propertySquare !=null and propertySquare !=''">
+				property_square,
+			</if>
+			<if test="propertyIsFengzu !=null and propertyIsFengzu !=''">
+				property_is_fengzu,
+			</if>
+			<if test="propertyAttribute !=null and propertyAttribute !=''">
+				property_attribute,
+			</if>
+			<if test="propertyStanderHeight !=null and propertyStanderHeight !=''">
+				property_stander_height,
+			</if>
+			<if test="propertyPhone !=null and propertyPhone !=''">
+				property_phone,
+			</if>
+			<if test="propertyTelephone !=null and propertyTelephone !=''">
+				property_telephone,
+			</if>
+			<if test="propertyCreateUser !=null and propertyCreateUser !=''">
+				property_create_user,
+			</if>
+			<if test="propertyUpdateUser !=null and propertyUpdateUser !=''">
+				property_update_user,
+			</if>
+			<if test="propertyCreateTime !=null and propertyCreateTime !=''">
+				property_create_time,
+			</if>
+			<if test="propertyImgsId !=null and propertyImgsId !=''">
+				property_imgs_id,
+			</if>
+			<if test="propertyIsZcorzd !=null and propertyIsZcorzd !=''">
+				property_is_zcorzd,
+			</if>
+			<if test="propertyIsDelete !=null and propertyIsDelete !=''">
+				property_is_delete,
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				condition1,
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				condition2,
+			</if>
+		</trim>
+		) values (
+		<trim prefix="" suffixOverrides=",">
+			<if test="propertyName !=null and propertyName !=''">
+				#{propertyName},
+			</if>
+			<if test="propertyLng !=null and propertyLng !=''">
+				#{propertyLng},
+			</if>
+			<if test="propertyLat !=null and propertyLat !=''">
+				#{propertyLat},
+			</if>
+			<if test="propertyMinFloor !=null and propertyMinFloor !=''">
+				#{propertyMinFloor},
+			</if>
+			<if test="propertyMaxFloor !=null and propertyMaxFloor !=''">
+				#{propertyMaxFloor},
+			</if>
+			<if test="propertyPrice !=null and propertyPrice !=''">
+				#{propertyPrice},
+			</if>
+			<if test="propertyDescription !=null and propertyDescription !=''">
+				#{propertyDescription},
+			</if>
+			<if test="propertyMinYear !=null and propertyMinYear !=''">
+				#{propertyMinYear},
+			</if>
+			<if test="propertyMaxYear !=null and propertyMaxYear !=''">
+				#{propertyMaxYear},
+			</if>
+			<if test="propertySquare !=null and propertySquare !=''">
+				#{propertySquare},
+			</if>
+			<if test="propertyIsFengzu !=null and propertyIsFengzu !=''">
+				#{propertyIsFengzu},
+			</if>
+			<if test="propertyAttribute !=null and propertyAttribute !=''">
+				#{propertyAttribute},
+			</if>
+			<if test="propertyStanderHeight !=null and propertyStanderHeight !=''">
+				#{propertyStanderHeight},
+			</if>
+			<if test="propertyPhone !=null and propertyPhone !=''">
+				#{propertyPhone},
+			</if>
+			<if test="propertyTelephone !=null and propertyTelephone !=''">
+				#{propertyTelephone},
+			</if>
+			<if test="propertyCreateUser !=null and propertyCreateUser !=''">
+				#{propertyCreateUser},
+			</if>
+			<if test="propertyUpdateUser !=null and propertyUpdateUser !=''">
+				#{propertyUpdateUser},
+			</if>
+			<if test="propertyCreateTime !=null and propertyCreateTime !=''">
+				#{propertyCreateTime},
+			</if>
+			<if test="propertyImgsId !=null and propertyImgsId !=''">
+				#{propertyImgsId},
+			</if>
+			<if test="propertyIsZcorzd !=null and propertyIsZcorzd !=''">
+				#{propertyIsZcorzd},
+			</if>
+			<if test="propertyIsDelete !=null and propertyIsDelete !=''">
+				#{propertyIsDelete},
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				#{condition1},
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				#{condition2},
+			</if>
+		</trim>
+		)
+	</insert>
+
+
+
+	<select id="findPropertyById" resultType="yxzz.dto.PropertyDto"
+		parameterType="java.lang.String">
+
+		SELECT
+		property_id AS propertyId,
+		property_name AS
+		propertyame,
+		property_lng AS propertyLng,
+		property_lat AS propertyLat,
+		property_min_floor AS propertyMinFloor,
+		property_max_floor AS
+		propertyMaxFloor,
+		property_price AS propertyPrice,
+		property_description
+		AS propertyDescription,
+		property_min_year AS propertyMinYear,
+		property_max_year AS propertyMaxYear,
+		property_square AS
+		propertySquare,
+		property_is_fengzu AS propertyIsFengzu,
+		property_attribute AS propertyAttribute,
+		property_stander_height AS
+		propertyStanderHeight,
+		property_phone AS propertyPhone,
+		property_telephone AS propertyTelephone,
+		property_create_user AS
+		propertyCreateUser,
+		property_update_user AS propertyUpdateUser,
+		property_create_time AS propertyCreateTime,
+		property_imgs_id AS
+		propertyImgsId,
+		property_is_zcorzd AS propertyIsZcorzd,
+		property_is_delete AS propertyIsDelete,
+		condition1 AS condition1,
+		condition2 AS condition2
+		FROM
+		`yx_Property`
+		WHERE 1=1
+		and
+		property_id=#{propertyId}
+
+
+	</select>
+
+
+	<update id="editPropertyById" parameterType="java.util.HashMap">
+		update yx_Property
+		<set>
+			<if test="propertyId !=null and propertyId !=''">
+				property_id=#{propertyId},
+			</if>
+			<if test="propertyName !=null and propertyName !=''">
+				property_name=#{propertyName},
+			</if>
+			<if test="propertyLng !=null and propertyLng !=''">
+				property_lng=#{propertyLng},
+			</if>
+			<if test="propertyLat !=null and propertyLat !=''">
+				property_lat=#{propertyLat},
+			</if>
+			<if test="propertyMinFloor !=null and propertyMinFloor !=''">
+				property_min_floor=#{propertyMinFloor},
+			</if>
+			<if test="propertyMaxFloor !=null and propertyMaxFloor !=''">
+				property_max_floor=#{propertyMaxFloor},
+			</if>
+			<if test="propertyPrice !=null and propertyPrice !=''">
+				property_price=#{propertyPrice},
+			</if>
+			<if test="propertyDescription !=null and propertyDescription !=''">
+				property_description=#{propertyDescription},
+			</if>
+			<if test="propertyMinYear !=null and propertyMinYear !=''">
+				property_min_year=#{propertyMinYear},
+			</if>
+			<if test="propertyMaxYear !=null and propertyMaxYear !=''">
+				property_max_year=#{propertyMaxYear},
+			</if>
+			<if test="propertySquare !=null and propertySquare !=''">
+				property_square=#{propertySquare},
+			</if>
+			<if test="propertyIsFengzu !=null and propertyIsFengzu !=''">
+				property_is_fengzu=#{propertyIsFengzu},
+			</if>
+			<if test="propertyAttribute !=null and propertyAttribute !=''">
+				property_attribute=#{propertyAttribute},
+			</if>
+			<if test="propertyStanderHeight !=null and propertyStanderHeight !=''">
+				property_stander_height=#{propertyStanderHeight},
+			</if>
+			<if test="propertyPhone !=null and propertyPhone !=''">
+				property_phone=#{propertyPhone},
+			</if>
+			<if test="propertyTelephone !=null and propertyTelephone !=''">
+				property_telephone=#{propertyTelephone},
+			</if>
+			<if test="propertyCreateUser !=null and propertyCreateUser !=''">
+				property_create_user=#{propertyCreateUser},
+			</if>
+			<if test="propertyUpdateUser !=null and propertyUpdateUser !=''">
+				property_update_user=#{propertyUpdateUser},
+			</if>
+			<if test="propertyCreateTime !=null and propertyCreateTime !=''">
+				property_create_time=#{propertyCreateTime},
+			</if>
+			<if test="propertyImgsId !=null and propertyImgsId !=''">
+				property_imgs_id=#{propertyImgsId},
+			</if>
+			<if test="propertyIsZcorzd !=null and propertyIsZcorzd !=''">
+				property_is_zcorzd=#{propertyIsZcorzd},
+			</if>
+			<if test="propertyIsDelete !=null and propertyIsDelete !=''">
+				property_is_delete=#{propertyIsDelete},
+			</if>
+			<if test="PropertyId !=null and PropertyId !=''">
+				condition1=#{condition1},
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				condition2=#{condition2},
+			</if>
+		</set>
+		where property_id=#{propertyId,jdbcType=VARCHAR}
+	</update>
+
+
+
+	<update id="deleteProperty" parameterType="java.lang.String">
+		<!-- delete from
+		yx_Property
+		where property_id =#{propertyId,jdbcType=VARCHAR} -->
+
+		UPDATE
+		`yx_property`
+		SET
+		`property_is_delete` = '1',
+		WHERE `property_id` = #{propertyId,jdbcType=VARCHAR};
+		
+		
+	</update>
+	
+	<update id="deleteSubwayProperty" parameterType="java.lang.String">
+		UPDATE
+		`yx_property`
+		SET
+		`sp_delete` = '1',
+		WHERE `id` = #{id,jdbcType=VARCHAR};
+		
+		
+	</update>
+	
+	
+	
+
+	<insert id="addPropertySubway" parameterType="java.util.Map">
+		insert into yx_subway_property(
+		<trim prefix="" suffixOverrides=",">
+			<if test="propertyId !=null and propertyId !=''">
+				property_id,
+			</if>
+			<if test="subwayId !=null and subwayId !=''">
+				subway_id,
+			</if>
+			<if test="spDistance !=null and spDistance !=''">
+				sp_distance,
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				condition1,
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				condition2,
+			</if>
+		</trim>
+		) values (
+		<trim prefix="" suffixOverrides=",">
+		<if test="propertyId !=null and propertyId !=''">
+			#{propertyId},
+		</if>
+		<if test="subwayId !=null and subwayId !=''">
+			#{subwayId},
+		</if>
+		<if test="spDistance !=null and spDistance !=''">
+			#{spDistance},
+		</if>
+		<if test="condition1 !=null and condition1 !=''">
+			#{condition1},
+		</if>
+		<if test="condition2 !=null and condition2 !=''">
+			#{condition2},
+		</if>
+	</trim>
+		)
+	</insert>
+	
+
+
+	<update id="editSubwayPropertyById" parameterType="java.util.HashMap">
+		update yx_subway_property
+		<set>
+				<trim prefix="" suffixOverrides=",">
+		
+			<if test="propertyId !=null and propertyId !=''">
+				property_id=#{propertyId,jdbcType=VARCHAR},
+			</if>
+			<if test="subwayId !=null and subwayId !=''">
+				subway_id=#{subwayId,jdbcType=VARCHAR},
+			</if>
+			<if test="spDistance !=null and spDistance !=''">
+				sp_distance=#{spDistance,jdbcType=VARCHAR},
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				condition1=#{condition1,jdbcType=VARCHAR},
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				condition2=#{condition2,jdbcType=VARCHAR},
+			</if>
+			</trim>
+		</set>
+		where id=#{id,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

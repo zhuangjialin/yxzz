@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yxzz.mapper.PropertyImgMapper">
+
+
+	<select id="findPropertyImgList" resultType="yxzz.dto.PropertyImgDto"
+		parameterType="java.util.HashMap">
+		SELECT
+		`property_img_id` AS propertyImgId,
+		`property_img_name` AS propertyImgName,
+		`property_img_property_id` AS propertyImgPropertyId,
+		`property_img_remark` AS propertyImgRemark,
+		`condition1` AS condition1,
+		`condition2` AS condition2
+		FROM
+		yx_property_img
+		WHERE 1=1
+		<if test="propertyImgId !=null and propertyImgId !=''">
+			and property_img_id=#{propertyImgId}
+		</if>
+		<if test="propertyImgName !=null and propertyImgName !=''">
+			and property_img_name=#{propertyImgName}
+		</if>
+		<if test="propertyImgPropertyId !=null and propertyImgPropertyId !=''">
+			and property_img_property_id=#{propertyImgPropertyId}
+		</if>
+		<if test="propertyImgRemark !=null and propertyImgRemark !=''">
+			and property_img_remark=#{propertyImgRemark}
+		</if>
+		<if test="condition1 !=null and condition1 !=''">
+			and condition1=#{condition1}
+		</if>
+		<if test="condition2 !=null and condition2 !=''">
+			and condition2=#{condition2}
+		</if>
+	</select>
+
+
+
+
+
+	<insert id="addPropertyImg" parameterType="java.util.Map">
+		insert into yx_property_img(
+		<trim prefix="" suffixOverrides=",">
+			<if test="propertyImgId !=null and propertyImgId !=''">
+			 property_img_id,
+		</if>
+		<if test="propertyImgName !=null and propertyImgName !=''">
+			 property_img_name,
+		</if>
+		<if test="propertyImgPropertyId !=null and propertyImgPropertyId !=''">
+			 property_img_property_id,
+		</if>
+		<if test="propertyImgRemark !=null and propertyImgRemark !=''">
+			 property_img_remark,
+		</if>
+		<if test="condition1 !=null and condition1 !=''">
+			 condition1,
+		</if>
+		<if test="condition2 !=null and condition2 !=''">
+			 condition2,
+		</if>
+		</trim>
+		) values (
+		<trim prefix="" suffixOverrides=",">
+		<if test="propertyImgId !=null and propertyImgId !=''">
+			#{propertyImgId},
+		</if>
+		<if test="propertyImgName !=null and propertyImgName !=''">
+			#{propertyImgName},
+		</if>
+		<if test="propertyImgPropertyId !=null and propertyImgPropertyId !=''">
+			#{propertyImgPropertyId},
+		</if>
+		<if test="propertyImgRemark !=null and propertyImgRemark !=''">
+			#{propertyImgRemark},
+		</if>
+		<if test="condition1 !=null and condition1 !=''">
+			#{condition1},
+		</if>
+		<if test="condition2 !=null and condition2 !=''">
+			#{condition2},
+		</if>
+		</trim>
+		)
+	</insert>
+
+
+
+	<select id="findPropertyImgById" resultType="yxzz.dto.PropertyImgDto"
+		parameterType="java.lang.String">
+
+		SELECT
+		`property_img_id` AS propertyImgId,
+		`property_img_name` AS propertyImgName,
+		`property_img_property_id` AS propertyImgPropertyId,
+		`property_img_remark` AS propertyImgRemark,
+		`condition1` AS condition1,
+		`condition2` AS condition2
+		FROM
+		yx_property_img
+		WHERE 1=1
+		and
+		property_img_id=#{PropertyImgId}
+
+
+	</select>
+
+
+	<update id="editPropertyImgById" parameterType="java.util.HashMap">
+		update yx_PropertyImg
+		<set>
+		<trim prefix="" suffixOverrides=",">
+		<if test="propertyImgName !=null and propertyImgName !=''">
+			 property_img_name=#{propertyImgName},
+		</if>
+		<if test="propertyImgPropertyId !=null and propertyImgPropertyId !=''">
+			 property_img_property_id=#{propertyImgPropertyId},
+		</if>
+		<if test="propertyImgRemark !=null and propertyImgRemark !=''">
+			 property_img_remark=#{propertyImgRemark},
+		</if>
+		<if test="condition1 !=null and condition1 !=''">
+			 condition1=#{condition1},
+		</if>
+		<if test="condition2 !=null and condition2 !=''">
+			 condition2=#{condition2},
+		</if>
+		</trim>
+		</set>
+		where property_img_id=#{propertyImgId,jdbcType=VARCHAR}
+	</update>
+
+
+
+	<delete id="deletePropertyImg" parameterType="java.lang.String">
+		delete from yx_property_img
+		where
+		property_img_id =#{propertyImgId,jdbcType=VARCHAR}
+	</delete>
+
+</mapper>

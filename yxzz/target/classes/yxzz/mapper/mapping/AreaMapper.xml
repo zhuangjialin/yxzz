@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yxzz.mapper.AreaMapper">
+
+
+	<select id="findAreaList" resultType="yxzz.dto.AreaDto"
+		parameterType="java.util.HashMap">
+		SELECT
+		`area_id` AS areaId,
+		`area_name` AS areaName,
+		`area_lng` AS areaLng,
+		`area_lat` AS areaLat,
+		`area_city_id` AS areaCityId,
+		`area_subwayNum` areaSubwayNum,
+		`area_code` AS areaCode,
+		`area_propertyNum` AS areaPropertyNum,
+		`condition1` AS condition1,
+		`condition2` AS condition2
+		FROM
+		`yx_area`
+		WHERE 1=1
+		<if test="areaId !=null and areaId !=''">
+			and area_id=#{areaId}
+		</if>
+		<if test="areaName !=null and areaName !=''">
+			and area_name=#{areaName}
+		</if>
+		<if test="areaLng !=null and areaLng !=''">
+			and area_lng=#{areaLng}
+		</if>
+		<if test="areaLat !=null and areaLat !=''">
+			and area_lat=#{areaLat}
+		</if>
+		<if test="areaCityId !=null and areaCityId !=''">
+			and area_city_id=#{areaCityId}
+		</if>
+		<if test="areaSubwayNum !=null and areaSubwayNum !=''">
+			and area_subwayNum=#{areaSubwayNum}
+		</if>
+		<if test="areaCode !=null and areaCode !=''">
+			and area_code=#{areaCode}
+		</if>
+		<if test="areaPropertyNum !=null and areaPropertyNum !=''">
+			and area_propertyNum=#{areaPropertyNum}
+		</if>
+		<if test="condition1 !=null and condition1 !=''">
+			and condition1=#{condition1}
+		</if>
+		<if test="condition2 !=null and condition2 !=''">
+			and condition2=#{condition2}
+		</if>
+
+	</select>
+
+
+
+
+
+	<insert id="addArea" parameterType="java.util.Map">
+		insert into yx_area(
+		<trim prefix="" suffixOverrides=",">
+			<if test="areaId !=null and areaId !=''">
+				area_id,
+			</if>
+			<if test="areaName !=null and areaName !=''">
+				area_name,
+			</if>
+			<if test="areaLng !=null and areaLng !=''">
+				area_lng,
+			</if>
+			<if test="areaLat !=null and areaLat !=''">
+				area_lat,
+			</if>
+			<if test="areaCityId !=null and areaCityId !=''">
+				area_city_id,
+			</if>
+			<if test="areaSubwayNum !=null and areaSubwayNum !=''">
+				area_subwayNum,
+			</if>
+			<if test="areaCode !=null and areaCode !=''">
+				area_code,
+			</if>
+			<if test="areaPropertyNum !=null and areaPropertyNum !=''">
+				area_propertyNum,
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				condition1,
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				condition2,
+			</if>
+		</trim>
+		) values (
+		<trim prefix="" suffixOverrides=",">
+			<if test="areaId !=null and areaId !=''">
+				#{areaId,jdbcType=VARCHAR},
+			</if>
+			<if test="areaName !=null and areaName !=''">
+				#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="areaLng !=null and areaLng !=''">
+				#{areaLng,jdbcType=VARCHAR},
+			</if>
+			<if test="areaLat !=null and areaLat !=''">
+				#{areaLat,jdbcType=VARCHAR},
+			</if>
+			<if test="areaCityId !=null and areaCityId !=''">
+				#{areaCityId,jdbcType=VARCHAR},
+			</if>
+			<if test="areaSubwayNum !=null and areaSubwayNum !=''">
+				#{areaSubwayNum,jdbcType=VARCHAR},
+			</if>
+			<if test="areaCode !=null and areaCode !=''">
+				#{areaCode,jdbcType=VARCHAR},
+			</if>
+			<if test="areaPropertyNum !=null and areaPropertyNum !=''">
+				#{areaPropertyNum,jdbcType=VARCHAR},
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				#{condition1,jdbcType=VARCHAR},
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				#{condition2,jdbcType=VARCHAR},
+			</if>
+		</trim>
+		)
+	</insert>
+
+
+
+	<select id="findAreaById" resultType="yxzz.dto.AreaDto"
+		parameterType="java.lang.String">
+
+		SELECT
+		`area_id` AS areaId,
+		`area_name` AS areaName,
+		`area_lng` AS areaLng,
+		`area_lat` AS areaLat,
+		`area_city_id` AS areaCityId,
+		`area_subwayNum` areaSubwayNum,
+		`area_code` AS areaCode,
+		`area_propertyNum` AS areaPropertyNum,
+		`condition1` AS condition1,
+		`condition2` AS condition2
+		FROM
+		`yx_area`
+		WHERE 1=1
+		and
+		area_id=#{areaId}
+
+
+	</select>
+
+
+	<update id="editAreaById" parameterType="java.util.HashMap">
+		update yx_area
+		<set>
+			<trim prefix="" suffixOverrides=",">
+			<if test="areaId !=null and areaId !=''">
+				area_id=#{areaId,jdbcType=VARCHAR},
+			</if>
+			<if test="areaName !=null and areaName !=''">
+				area_name=#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="areaLng !=null and areaLng !=''">
+				area_lng=#{areaLng,jdbcType=VARCHAR},
+			</if>
+			<if test="areaLat !=null and areaLat !=''">
+				area_lat=#{areaLat,jdbcType=VARCHAR},
+			</if>
+			<if test="areaCityId !=null and areaCityId !=''">
+				area_city_id=#{areaCityId,jdbcType=VARCHAR},
+			</if>
+			<if test="areaSubwayNum !=null and areaSubwayNum !=''">
+				area_subwayNum=#{areaSubwayNum,jdbcType=VARCHAR},
+			</if>
+			<if test="areaCode !=null and areaCode !=''">
+				area_code=#{areaCode,jdbcType=VARCHAR},
+			</if>
+			<if test="areaPropertyNum !=null and areaPropertyNum !=''">
+				area_propertyNum=#{areaPropertyNum,jdbcType=VARCHAR},
+			</if>
+			<if test="condition1 !=null and condition1 !=''">
+				condition1=#{condition1,jdbcType=VARCHAR},
+			</if>
+			<if test="condition2 !=null and condition2 !=''">
+				condition2=#{condition2,jdbcType=VARCHAR},
+			</if>
+			</trim>
+		</set>
+		where area_id=#{areaId,jdbcType=VARCHAR}
+	</update>
+
+
+
+	<delete id="deleteArea" parameterType="java.lang.String">
+		delete from yx_area
+		where area_id =#{areaId,jdbcType=VARCHAR}
+	</delete>
+
+</mapper>

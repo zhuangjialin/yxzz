@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yxzz.mapper.AreaMapper">
+
+
+	<select id="findAreaList" resultType="yxzz.dto.AreaDto"
+		parameterType="java.util.HashMap">
+
+		SELECT city_id AS cityId,city_name AS cityName,city_code AS
+		cityCode,condition1,condition2 FROM yx_area
+		where 1=1
+		<if test="cityId !=null and cityId !=''">
+			and city_id=#{cityId}
+		</if>
+		<if test="cityName !=null and cityName !=''">
+			and city_name=#{cityName}
+		</if>
+		<if test="cityCode !=null and cityCode !=''">
+			and city_code=#{cityCode}
+		</if>
+		<if test="condition1 !=null and condition1 !=''">
+			and condition1=#{condition1}
+		</if>
+		<if test="condition2 !=null and condition2 !=''">
+			and condition2=#{condition2}
+		</if>
+
+	</select>
+
+
+
+
+
+	<insert id="addArea" parameterType="java.util.Map">
+		insert into yx_area(
+		<trim prefix="" suffixOverrides=",">
+			<if test="cityId !='' and cityId ! =null ">city_id,</if>
+			<if test="cityName !='' and cityName ! =null ">city_name,</if>
+			<if test="cityCode !='' and cityCode ! =null ">city_code,</if>
+			<if test="condition1 !='' and condition1 ! =null ">condition1,
+			</if>
+			<if test="condition2 !='' and condition2 ! =null ">condition2,
+			</if>
+		</trim>
+		)
+		<trim prefix="" suffixOverrides=",">
+			<if test="cityId !='' and cityId ! =null ">#{cityId,jdbcType=VARCHAR},
+			</if>
+			<if test="cityName !='' and cityName ! =null ">#{cityName,jdbcType=VARCHAR},
+			</if>
+			<if test="cityCode !='' and cityCode ! =null ">#{cityCode,jdbcType=VARCHAR},
+			</if>
+			<if test="condition1 !='' and condition1 ! =null ">#{condition1,jdbcType=VARCHAR},
+			</if>
+			<if test="condition2 !='' and condition2 ! =null ">#{condition2,jdbcType=VARCHAR},
+			</if>
+		</trim>
+		)
+	</insert>
+
+
+
+	<select id="findAreaById" resultType="yxzz.dto.AreaDto"
+		parameterType="java.lang.String">
+
+		SELECT city_id AS cityId,city_name AS cityName,city_code
+		AS cityCode,condition1,condition2 FROM yx_area
+		where 1=1 and
+		city_id=#{cityId}
+
+
+	</select>
+
+
+	<update id="editAreaById" parameterType="java.util.HashMap">
+		update yx_area
+		<set>
+			<if test="cityName !='' and cityName ! =null ">city_name=#{cityName,jdbcType=VARCHAR},
+			</if>
+			<if test="cityCode !='' and cityCode ! =null ">city_code=#{cityCode,jdbcType=VARCHAR},
+			</if>
+			<if test="condition1 !='' and condition1 ! =null ">condition1=#{condition1,jdbcType=VARCHAR},
+			</if>
+			<if test="condition2 !='' and condition2 ! =null ">condition2=#{condition2,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where city_id=#{cityId,jdbcType=VARCHAR}
+	</update>
+
+
+
+	<delete id="deleteProperty" parameterType="java.lang.String">
+		delete from yx_area where city_id =#{cityId,jdbcType=VARCHAR}
+	</delete>
+
+</mapper>
